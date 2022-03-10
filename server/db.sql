@@ -1,17 +1,12 @@
-CREATE DATABASE mullheim_vacation;
-CREATE DATABASE mullheim_vacation_test;
+CREATE DATABASE mullheim_rental;
+CREATE DATABASE mullheim_rental_test;
 
-CREATE TABLE reviews(
-  reviews_id SERIAL PRIMARY KEY,
+CREATE TABLE posts(
+  post_id SERIAL PRIMARY KEY,
   description VARCHAR(500)
 );
 
-CREATE TABLE messages(
-  massage_id SERIAL PRIMARY KEY,
-  description VARCHAR(500)
-);
-
-CREATE TABLE users
+CREATE TABLE Users
 (
   user_id SERIAL Primary Key,
   email varchar(255) ,
@@ -21,20 +16,10 @@ CREATE TABLE users
   UNIQUE(username)
 );
 
-ALTER TABLE reviews
+ALTER TABLE posts
 ADD COLUMN user_fk_id INTEGER;
 
-ALTER TABLE messages
-ADD COLUMN user_fk_id INTEGER;
-
-
-ALTER TABLE reviews
-ADD CONSTRAINT constraint_fk FOREIGN KEY (user_fk_id) REFERENCES Users
-(user_id)
-ON
-DELETE CASCADE;
-
-ALTER TABLE messages
+ALTER TABLE posts
 ADD CONSTRAINT constraint_fk FOREIGN KEY (user_fk_id) REFERENCES Users
 (user_id)
 ON
