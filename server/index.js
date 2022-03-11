@@ -4,12 +4,12 @@ const cors = require("cors");
 const bcrypt = require('bcrypt')
 const port = process.env.NODE_ENV == "test" ? 5001 : 5000;
 let pool;
-
-if (process.env.NODE_ENV === "test") {
+require('dotenv').config()
+/*if (process.env.NODE_ENV === "test") {
   pool = require("./test_db");
-} else {
-  pool = require("./db");
-}
+} else {*/
+  pool= require("./db")
+//}
 
 app.use(cors());
 app.use(express.json());
